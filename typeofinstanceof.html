@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>typeof和instanceof</title>
+    <style>
+
+    </style>
+</head>
+<body>
+<script>
+    function typeOf(obj){
+        //通过Object.prototype.toString.call() => 返回[object xxx]
+        // xxx是值或者引用类型的名称，用slice取出xxx部分，转换小写返回
+        // slice(8,-1) -1 => str.length -1
+        return Object.prototype.toString.call(obj).slice(8,-1).toLowerCase()
+    }
+    console.log(typeOf(/[0-9]/))
+
+    function my_instanceof(leftValue,rightValue){
+        // 如果实例不是对象或者实例是空对象，直接返回false
+        if(typeof leftValue !== 'object' || leftValue === null) return false
+        let rightProto = rightValue.prototype;//初始化构造函数原型
+        let leftProto = leftValue.__proto__;//初始化实例对象的构造函数原型
+        while (true){
+            //原型链查找完毕，没有找到，返回false
+            if (leftProto === null) {
+                return false
+            }
+            //在原型链上找到了构造函数的原型，返回true
+            if (leftProto === rightProto) {
+                return true
+            }
+            leftProto = leftProto.__proto__;//遍历实例对象的原型链直到null
+
+        }
+    }
+
+    console.log(my_instanceof([],Array))
+</script>
+</body>
+</html>

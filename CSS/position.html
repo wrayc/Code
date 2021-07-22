@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>position</title>
+    <style>
+        .container {
+            position: relative;
+        }
+
+        p {
+            width: 100px;
+            height: 100px;
+            border: 1px solid deepskyblue
+        }
+        .p2{
+            position: relative;
+            top: 50px;
+            left: 20px;
+        }
+
+        .p3 {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+        }
+        .p4{
+            position: fixed;
+            bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <p>001</p>
+    <p class="p2">002</p>
+    <p class="p3">003</p>
+    <p class="p4">004</p>
+</div>
+</body>
+</html>
